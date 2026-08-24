@@ -3,7 +3,12 @@ const app = express();
 const port = 3001;
 
 // Import callbacks
-const { getEndpoint1, getEndpoint2, getEndpoint3, getRoot } = require("./controllers");
+const {
+  getEndpoint1,
+  getEndpoint2,
+  getEndpoint3,
+  getRoot,
+} = require("./controllers");
 
 // Define routes
 app.get("/", getRoot);

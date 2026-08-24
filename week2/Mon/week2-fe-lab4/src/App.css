@@ -1,0 +1,16 @@
+.content-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content-layout main {
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}

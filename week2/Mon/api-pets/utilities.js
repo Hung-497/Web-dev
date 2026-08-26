@@ -33,7 +33,7 @@ const addOne = (name, species, age, color, weight) => {
 
   petArray.push(newPet);
   return newPet;
-}
+};
 
 const findById = (id) => {
   const pet = petArray.find((item) => item.id == id);
@@ -42,7 +42,7 @@ const findById = (id) => {
   } else {
     return false;
   }
-}
+};
 
 const updateOneById = (id, updatedData) => {
   const pet = findById(id);
@@ -66,7 +66,7 @@ const updateOneById = (id, updatedData) => {
     return pet;
   }
   return false;
-}
+};
 
 const deleteOneById = (id) => {
   const pet = findById(id);
@@ -76,7 +76,7 @@ const deleteOneById = (id) => {
     return petArray.length < initialLength; // Indicate successful deletion if the length has decreased
   }
   return false; // Return false if the item was not found
-}
+};
 
 if (require.main === module) {
   // Add pet

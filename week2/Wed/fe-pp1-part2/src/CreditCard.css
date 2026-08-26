@@ -1,0 +1,90 @@
+.credit-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 16px;
+}
+
+.credit-card {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 400px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1.92 / 1;
+  padding: 22px 24px;
+  overflow: hidden;
+  border-radius: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.credit-card-logo {
+  align-self: flex-end;
+  height: 38px;
+  object-fit: contain;
+  transform: translateY(-7px);
+}
+
+.visa-logo {
+  width: 70px;
+}
+
+.mastercard-logo {
+  width: 52px;
+}
+
+.credit-card-number {
+  margin: 18px 0 20px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  word-spacing: 6px;
+}
+
+.credit-card-details {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  margin-top: auto;
+  white-space: nowrap;
+}
+
+.credit-card-details p,
+.credit-card-owner {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+@media (max-width: 700px) {
+  .credit-card-list {
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .credit-card {
+    min-width: 0;
+    padding: 20px 22px;
+  }
+
+  .credit-card-logo {
+    height: 34px;
+  }
+
+  .credit-card-number {
+    margin: 14px 0 16px;
+    font-size: 28px;
+  }
+
+  .credit-card-details p,
+  .credit-card-owner {
+    font-size: 17px;
+  }
+}

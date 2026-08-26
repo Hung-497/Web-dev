@@ -1,0 +1,30 @@
+.box-color-list {
+  width: min(690px, calc(100% - 32px));
+  margin: 20px auto;
+}
+
+.box-color {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  margin-bottom: 16px;
+  border: 2px solid #111;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  text-align: center;
+}
+
+.box-color p {
+  margin: 0;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .box-color {
+    min-height: 110px;
+    font-size: 22px;
+  }
+}

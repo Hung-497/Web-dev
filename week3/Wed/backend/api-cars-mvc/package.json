@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "node models/carModel.js && node models/userModel.js",
+    "test": "node feedbackLib.js",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },

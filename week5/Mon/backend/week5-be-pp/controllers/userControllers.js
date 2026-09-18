@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-const moongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 // GET /users
 const getAllUsers = async (req, res) => {
@@ -34,9 +34,9 @@ const createUser = async (req, res) => {
 // GET /users/:userId
 const getUserById = async (req, res) => {
   const userId = req.params.userId;
-  const user = await User.findById(userId);
 
   if (!mongoose.Types.ObjectId.isValid(userId)) {
+  const user = await User.findById(userId);
 
     return res.status(400).json({ message: "Invalid ID" });
   }
@@ -61,7 +61,7 @@ const updateUser = async (req, res) => {
 
   }
 
-  const updatedUser = await User.findBYIdAndUpdate(userId, { ...req.body }); // Spread the req.body object
+  const updatedUser = await User.findByIdAndUpdate(userId, { ...req.body }); // Spread the req.body object
 
   try {
     if (updatedUser) {

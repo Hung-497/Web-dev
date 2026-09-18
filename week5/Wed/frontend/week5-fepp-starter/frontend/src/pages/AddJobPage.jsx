@@ -13,7 +13,7 @@ const AddJobPage = () => {
 
   const [newJob, setNewJob] = useState({
     title: "",
-    type: "Full-Time",
+    type: "Full-time",
     location: "",
     description: "",
     salary: 4500,
@@ -150,8 +150,8 @@ const AddJobPage = () => {
           <option value="" disabled>
             Select job type
           </option>
-          <option value="Full-Time">Full-Time</option>
-          <option value="Part-Time">Part-Time</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Part-time">Part-time</option>
           <option value="Internship">Internship</option>
         </select>
         <label htmlFor="description">Job Description:</label>

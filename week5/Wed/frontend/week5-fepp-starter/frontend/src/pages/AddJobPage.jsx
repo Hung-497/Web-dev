@@ -84,11 +84,8 @@ const AddJobPage = () => {
     if (
       !newJob.title ||
       !newJob.type ||
-      !newJob.location ||
-      !newJob.description ||
       !newJob.company.name ||
-      !newJob.company.contactEmail ||
-      !newJob.company.contactPhone
+      !newJob.company.contactEmail
     ) {
       console.error("Please fill in all required fields");
       return;
@@ -97,8 +94,8 @@ const AddJobPage = () => {
     const JobToAdd = {
       title: newJob.title,
       type: newJob.type,
-      location: newJob.location,
       description: newJob.description,
+      location: newJob.location,
       salary: newJob.salary,
       company: {
         name: newJob.company.name,

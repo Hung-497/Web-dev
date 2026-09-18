@@ -2,21 +2,6 @@ import "./Counter.css";
 import { useState } from "react";
 
 const Counter = () => {
-  const handleClick = () => {
-    console.log("Button clicked");
-  };
-  //   let theme = "light";
-
-  const setDarkTheme = () => {
-    theme = "dark";
-    console.log(theme);
-  };
-
-  const setLightTheme = () => {
-    theme = "light";
-    console.log(theme);
-  };
-
   const [theme, setTheme] = useState("light");
   const [count, setCount] = useState(0);
 

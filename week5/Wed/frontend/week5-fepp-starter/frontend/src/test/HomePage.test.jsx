@@ -170,7 +170,7 @@ describe('HomePage - Iteration 2: Fetch Jobs from Backend', () => {
       json: async () => mockJobs,
     });
 
-    const { rerender } = render(
+    render(
       <BrowserRouter>
         <HomePage />
       </BrowserRouter>
@@ -333,4 +333,3 @@ describe('HomePage - Iteration 2: Fetch Jobs from Backend', () => {
     expect(container).toBeInTheDocument();
   });
 });
-

@@ -34,6 +34,9 @@ const UseEffectTest = () => {
       <h1>UseEffectTest Component</h1>
       <button onClick={() => setToggleOne(!toggleOne)}>ToggleOne</button>
       <button onClick={() => setToggleTwo(!toggleTwo)}>toggleTwo</button>
+      <button onClick={() => setCount((currentCount) => currentCount + 1)}>
+        Count: {count}
+      </button>
     </div>
   );
 };

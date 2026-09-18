@@ -35,6 +35,7 @@ const JobPage = () => {
 
       if (!response.ok) {
         console.error("Failed to delete job");
+        return;
       }
       console.log("Job deleted successfully");
       navigate("/");
@@ -51,13 +52,13 @@ const JobPage = () => {
     <div className="job-details">
         <div>
           <h2>{job.title}</h2>
-          <p>{job.description}</p>
-          <p>{job.location}</p>
-          <p>{job.salary}</p>
-          <p>{job.type}</p>
-          <p>{job.company.name}</p>
-          <p>{job.company.contactEmail}</p>
-          <p>{job.company.contactPhone}</p>
+          <p>Description: {job.description}</p>
+          <p>Location: {job.location}</p>
+          <p>Salary: {job.salary}</p>
+          <p>Type: {job.type}</p>
+          <p>Company: {job.company.name}</p>
+          <p>Contact Email: {job.company.contactEmail}</p>
+          <p>Contact Phone: {job.company.contactPhone}</p>
         </div>
       <Link to={`/edit-job/${id}`}>
         <button>Edit Job</button>
@@ -68,4 +69,3 @@ const JobPage = () => {
 };
 
 export default JobPage;
-

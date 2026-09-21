@@ -1,0 +1,13 @@
+const BookListing = () => {
+  return (
+    <div className="book-preview">
+      <h2>Book Title:</h2>
+      <p>Author:</p>
+      <p>ISBN:</p>
+      <p>Available:</p>
+    </div>
+  );
+};
+
+export default BookListing;
+

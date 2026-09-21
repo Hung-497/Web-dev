@@ -7,11 +7,9 @@ const EditBookPage = () => {
   const [isbn, setIsbn] = useState("");
   const [isAvailable, setIsAvailable] = useState("false");
   const [borrower, setBorrower] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
-  const [book, setBook] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,13 +58,55 @@ const EditBookPage = () => {
 
     updateBook(updatedBook);
     navigate(`/books/${id}`);
-  }
+  };
   return (
     <div className="create">
       <h2>Update Book</h2>
+      <form onSubmit={submitForm}>
+        <label>Book Title:</label>
+        <input
+          type="text"
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <label>Author:</label>
+        <input
+          type="text"
+          required
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+
+        <label>ISBN:</label>
+        <input
+          type="text"
+          required
+          value={isbn}
+          onChange={(e) => setIsbn(e.target.value)}
+        />
+
+        <label>Available:</label>
+        <select
+          value={isAvailable}
+          onChange={(e) => setIsAvailable(e.target.value)}
+        >
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+
+        <label>Borrower:</label>
+        <input
+          type="text"
+          value={borrower}
+          onChange={(e) => setBorrower(e.target.value)}
+        />
+
+        <button>Update Book</button>
+      </form>
     </div>
   );
 };
 
 export default EditBookPage;
-

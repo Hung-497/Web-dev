@@ -7,7 +7,7 @@ const AddBookPage = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
-  const [isAvailable, setIsAvailable] = useState(true);
+  const [isAvailable, setIsAvailable] = useState("true");
   const [borrower, setBorrower] = useState("");
 
   const submitForm = (e) => {

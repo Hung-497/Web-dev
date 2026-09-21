@@ -7,7 +7,6 @@ const EditBookPage = () => {
   const [isbn, setIsbn] = useState("");
   const [isAvailable, setIsAvailable] = useState("false");
   const [borrower, setBorrower] = useState("");
-  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
   const navigate = useNavigate();

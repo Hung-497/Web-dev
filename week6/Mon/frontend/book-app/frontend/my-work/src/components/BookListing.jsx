@@ -1,10 +1,10 @@
-const BookListing = () => {
+const BookListing = ({book}) => {
   return (
     <div className="book-preview">
-      <h2>Book Title:</h2>
-      <p>Author:</p>
-      <p>ISBN:</p>
-      <p>Available:</p>
+      <h2>Book Title: {book.title}</h2>
+      <p>Author: {book.author}</p>
+      <p>ISBN: {book.isbn}</p>
+      <p>Available: {book.availability.isAvailable ? "Yes" : "No"}</p>
     </div>
   );
 };

@@ -1,7 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const BookPage = () => {
+const BookPage = ({ isAuthenticated }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user ? user.token : null;
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,17 +31,23 @@ const BookPage = () => {
     try {
       const res = await fetch(`/api/books/${bookId}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`, // <-- ADD THIS
+        },
       });
       if (!res.ok) throw new Error("Failed to delete book");
+      navigate("/");
     } catch (error) {
       console.error("Error deleting book:", error);
     }
   };
 
-  const onDeleteClick = (bookId) => {
-    const confirm = window.confirm("Are you sure you want to delete this book?");
+  const onDeleteClick = async (bookId) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this book?",
+    );
     if (confirm) {
-      deleteBook(bookId);
+      await deleteBook(bookId);
       navigate("/");
     }
   };
@@ -58,8 +66,14 @@ const BookPage = () => {
           <p>Available: {book?.availability.isAvailable ? "Yes" : "No"}</p>
           <p>Borrower: {book?.availability.borrower || "-"}</p>
           <button onClick={() => navigate("/")}>Back</button>
-          <button onClick={() => onDeleteClick(book.id)}>Delete</button>
-          <button onClick={() => navigate(`/edit-book/${book.id}`)}>Edit</button>
+          {isAuthenticated && (
+            <>
+              <button onClick={() => navigate(`/edit-book/${book._id}`)}>
+                Edit
+              </button>
+              <button onClick={() => onDeleteClick(book._id)}>Delete</button>
+            </>
+          )}
         </>
       )}
     </div>

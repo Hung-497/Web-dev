@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const EditBookPage = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user ? user.token : null;
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [isbn, setIsbn] = useState("");
@@ -30,6 +32,7 @@ const EditBookPage = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // <-- ADD THIS
         },
         body: JSON.stringify(updatedBook),
       });
@@ -42,7 +45,7 @@ const EditBookPage = () => {
     }
   };
 
-  const submitForm = (e) => {
+  const submitForm = async(e) => {
     e.preventDefault();
 
     const updatedBook = {
@@ -55,7 +58,7 @@ const EditBookPage = () => {
       },
     };
 
-    updateBook(updatedBook);
+    await updateBook(updatedBook);
     navigate(`/books/${id}`);
   };
   return (

@@ -1,16 +1,48 @@
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 const BookPage = () => {
+  const { id } = useParams();
+  const [book, setBook] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        const res = await fetch(`/api/books/${id}`);
+        if (!res.ok) throw new Error("Network response was not ok");
+        const data = await res.json();
+        setBook(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBook();
+  }, [id]);
+
   return (
     <div className="book-preview">
-      <>
-        <h2></h2>
-        <p>Author: </p>
-        <p>ISBN: </p>
-        <p>Available: </p>
-        <p>Borrower: </p>
-      </>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <>
+          <h2>{book?.title}</h2>
+          <p>Author: {book?.author}</p>
+          <p>ISBN: {book?.isbn}</p>
+          <p>Available: {book?.availability.isAvailable ? "Yes" : "No"}</p>
+          <p>Borrower: {book?.availability.borrower || "-"}</p>
+          <button onClick={() => navigate("/")}>Back</button>
+        </>
+      )}
     </div>
   );
 };
 
 export default BookPage;
-

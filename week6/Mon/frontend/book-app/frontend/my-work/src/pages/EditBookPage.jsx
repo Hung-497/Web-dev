@@ -42,6 +42,7 @@ const EditBookPage = () => {
       return true;
     } catch (error) {
       console.error(error);
+      return false;
     }
   };
 
@@ -58,8 +59,10 @@ const EditBookPage = () => {
       },
     };
 
-    await updateBook(updatedBook);
-    navigate(`/books/${id}`);
+    const success = await updateBook(updatedBook);
+    if (success) {
+      navigate(`/books/${id}`);
+    }
   };
   return (
     <div className="create">

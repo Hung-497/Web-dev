@@ -24,8 +24,10 @@ const AddBookPage = () => {
         borrower,
       },
     };
-    await addBook(newBook);
-    return navigate("/");
+    const success = await addBook(newBook);
+    if (success) {
+      return navigate("/");
+    }
   };
 
   const addBook = async (newBook) => {

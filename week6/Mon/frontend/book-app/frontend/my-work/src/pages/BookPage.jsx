@@ -36,7 +36,7 @@ const BookPage = ({ isAuthenticated }) => {
         },
       });
       if (!res.ok) throw new Error("Failed to delete book");
-      navigate("/");
+      return true;
     } catch (error) {
       console.error("Error deleting book:", error);
     }
@@ -47,8 +47,10 @@ const BookPage = ({ isAuthenticated }) => {
       "Are you sure you want to delete this book?",
     );
     if (confirm) {
-      await deleteBook(bookId);
-      navigate("/");
+      const isDeleted = await deleteBook(bookId);
+      if (isDeleted) {
+        navigate("/");
+      }
     }
   };
 

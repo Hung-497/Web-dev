@@ -15,32 +15,35 @@ const Signup = ({ setIsAuthenticated }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    try {
+      const response = await fetch("/api/users/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+          phone_number: phoneNumber,
+          gender,
+          date_of_birth: dateOfBirth,
+          membership_status: membershipStatus,
+        }),
+      });
+      const user = await response.json();
 
-    const response = await fetch("/api/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        password,
-        name,
-        phone_number: phoneNumber,
-        gender,
-        date_of_birth: dateOfBirth,
-        membership_status: membershipStatus,
-      }),
-    });
-    const user = await response.json();
+      if (!response.ok) {
+        console.log(user.error);
+        setError(user.error);
+        return;
+      }
 
-    if (!response.ok) {
-      console.log(user.error);
-      setError(user.error);
-      return;
+      localStorage.setItem("user", JSON.stringify(user));
+      console.log("success");
+      setIsAuthenticated(true); // <-- ADD THIS LINE
+      navigate("/");
+    } catch (error) {
+      console.error("Error during signup:", error);
     }
-
-    localStorage.setItem("user", JSON.stringify(user));
-    console.log("success");
-    setIsAuthenticated(true); // <-- ADD THIS LINE
-    navigate("/");
   };
 
   return (
